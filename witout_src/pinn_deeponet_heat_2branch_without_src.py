@@ -495,9 +495,11 @@ def main(cfg: DictConfig):
     print("✔ Comparison plot saved:", "comparison.png")
 
     print("File saved in:", cur_dir)
-    
+
+    #Remove plt.show() to avoid blocking execution in multirun environment
     plt.show()
 
 if __name__ == "__main__":
     main()
+
 
