@@ -12,7 +12,7 @@ function [u1, x, t, u_meas_02, u_meas_05, u_meas_08] = OneDimBH_src_dataset_mult
     % ========================
     % Base directories
     % ========================
-    base_dir = "/MATLAB Drive/Tesi Magistrale";
+    base_dir = "path";
 
     gt_dir     = fullfile(base_dir, "gt_bioheat1D_src_multilayer");
     fig_dir    = fullfile(base_dir, "gt_figures");
