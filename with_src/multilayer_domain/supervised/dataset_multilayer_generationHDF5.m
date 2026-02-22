@@ -1,7 +1,7 @@
 N_samples = 100;
 x_change  = linspace(0.2, 0.8, N_samples);
 
-base_dir = "/MATLAB Drive/Tesi Magistrale/data";
+base_dir = "path";
 if ~exist(base_dir,'dir')
     mkdir(base_dir);
 end
