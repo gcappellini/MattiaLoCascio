@@ -360,7 +360,12 @@ class PINNDeepONet(nn.Module):
 
                     
             # Loss weights (no BC and IC weights needed - hard constraints!)
-
+            # # Unbalanced training:
+            # w_pde = 1.0
+            # w_bc0 = 1.0
+            # w_meas = 1.0
+            
+            # Balanced training
             if epoch == 0:
                 initial_losses = torch.tensor([loss_pde.item(), loss_bc0.item(), loss_meas.item()])
             w_pde = 5.0 / (initial_losses[0])
@@ -613,4 +618,5 @@ if __name__ == "__main__":
 
 # python pinn_deeponet_heat_3branch_with_src_balanced.py -m     for multirun with different n_ic_sensors
 # Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
 # .\venv\Scripts\Activate.ps1
