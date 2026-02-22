@@ -261,11 +261,11 @@ class PINNDeepONet(nn.Module):
         }
         
         for epoch in range(n_epochs):
-            # Sample random IC amplitude
+            # Sample random theta_gt and theta0_0 for this epoch
             theta_gt = theta_gt_range[0] + (theta_gt_range[1] - theta_gt_range[0]) * torch.rand(1).item()
             theta0_0 = theta0_0_range[0] + (theta0_0_range[1] - theta0_0_range[0]) * torch.rand(1).item()
 
-            # Generate IC and source sensors
+            # Generate IC sensors
             ic_sensors = self.generate_ic(theta_gt, theta0_0)
             
             # Sample collocation points (x, t)
@@ -504,4 +504,5 @@ if __name__ == "__main__":
     main()
 
 # python pinn_deeponet_heat_2branch_without_src.py -m     for multirun with different n_ic_sensors
+
 
