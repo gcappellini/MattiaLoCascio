@@ -20,7 +20,7 @@ for k = 1:N_samples
             k, N_samples, x_interface);
 
     % --- solver ---
-    [T, x_grid, tlist] = OneDimBH_src_multi_layer(x_interface);
+    [T, x_grid, tlist] = OneDimBH_src_dataset_multilayer(x_interface);
 
     % --- HDF5 iitalization---
     if k == 1
