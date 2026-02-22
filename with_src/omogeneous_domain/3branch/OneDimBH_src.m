@@ -10,7 +10,7 @@ function [sol] = OneDimBH_src()
   u1 = sol(:,:,1); % solution of system
 
   % Write solution to file
-  fileID = fopen("\Users\Mattia\Dropbox\Mattia\Tesi Magistrale/gt_bioheat1D_src.csv", 'w');
+  fileID = fopen("path/gt_bioheat1D_src.csv", 'w');
   for i = 1:101
       for j = 1:101
           fprintf(fileID,'%6.2f %6.2f %12.8f\n', x(j), t(i), u1(i,j));
