@@ -485,7 +485,7 @@ class PINNDeepONet(nn.Module):
         return history
     
 # ------- Plotting ------- #
-def plot_solution(model, theta_gt_test, theta0_0_test, Tx_test, x_meas_test, source_type='gaussian', source_amplitude=0.5, x_interface = 0.5, gt=None):
+def plot_solution(model, Tx_test, x_meas_test, source_type='gaussian', source_amplitude=0.5, x_interface = 0.5, gt=None):
     """Visualize the trained solution"""
     
     # Generate test case
@@ -700,9 +700,9 @@ def main(cfg: DictConfig):
     print("✔ Training plot saved:", "pinn_deeponet_training_with_src_multilayer.png")
     
     
-    fig3,fig_err,fig_4 = plot_solution(model, theta_gt_test = cfg.test.theta_gt_test, theta0_0_test = cfg.test.theta0_0_test, 
-                                 Tx_test = cfg.test.Tx_test_multilayer, x_meas_test = cfg.test.x_meas_test,source_type=cfg.source.source_type,
-                                   source_amplitude = cfg.source.source_amplitude_multilayer, x_interface = cfg.training.x_interface,gt=gt_data)
+    fig3,fig_err,fig_4 = plot_solution(model,Tx_test = cfg.test.Tx_test_ipinn, x_meas_test = cfg.test.x_meas_test_ipinn,
+                                       source_type=cfg.source.source_type,source_amplitude = cfg.source.source_amplitude_multilayer, 
+                                       x_interface = cfg.training.x_interface,gt=gt_data)
     fig3_path = os.path.join(cur_dir, "pinn_deeponet_solution_with_src_3branch_multilayer.png")
     fig_err_path = os.path.join(cur_dir, "comparison_src_3branch_multilayer.png")
     fig_4_path = os.path.join(cur_dir, "internal_measurement_multilayer.png")
