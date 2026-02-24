@@ -247,7 +247,19 @@ class PINNDeepONet(nn.Module):
         a4 = torch.as_tensor(a4, dtype=torch.float32, device=device)
 
         return a1, a2, a3, a4
-    
+
+    def generate_ic(self, x = None):
+        """
+        Generate initial null condition sensors.
+        Returns:
+            ic_sensors: tensor of initial condition values at sensor locations
+        """
+
+        # Evaluate cubic at sensor locations
+        if x is None:
+            x = self.sensor_x_ic
+        ic = 0 * torch.ones_like(x)
+        return ic
     
     def generate_source(self, source_type='gaussian', amplitude=0.5, x = None, a3 = 0.7939, a4 = 3.570):
         """
@@ -541,4 +553,5 @@ if __name__ == "__main__":
     main()
 
 # Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
 # .\venv\Scripts\Activate.ps1
