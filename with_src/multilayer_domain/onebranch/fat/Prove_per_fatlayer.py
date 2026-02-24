@@ -294,7 +294,7 @@ class PINNDeepONet(nn.Module):
         
         return src
     
-    def train_pinn(self, n_epochs=5000, n_colloc=200, n_bc0 = 40, n_ic = 50, lr=1e-3, source_type='gaussian', source_amplitude=0.0):
+    def train_pinn(self, n_epochs=5000, n_colloc=200, n_bc0 = 40, lr=1e-3, source_type='gaussian', source_amplitude=0.0):
         """
         Train PINN-DeepONet with physics-informed loss
 
@@ -307,7 +307,7 @@ class PINNDeepONet(nn.Module):
         print(f"Epochs: {n_epochs}")
         print(f"Collocation points: {n_colloc}")
         print(f"Source type: {source_type}, Amplitude: {source_amplitude}")
-        print("Boundary conditions: HARD constraints (no soft loss)")
+        print("Right Boundary condition: HARD constraint (no soft loss)")
         print("="*70)
         
         optimizer = torch.optim.Adam(self.parameters(), lr=lr)
@@ -512,7 +512,6 @@ def main(cfg: DictConfig):
         n_epochs=cfg.training.n_epochs,
         n_colloc=cfg.training.n_colloc,
         n_bc0=cfg.training.n_bc0,
-        n_ic=cfg.training.n_ic,
         lr=cfg.training.lr,
         source_type=cfg.source.source_type,
         source_amplitude=cfg.source.source_amplitude_multilayer
@@ -555,3 +554,4 @@ if __name__ == "__main__":
 # Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 # .\venv\Scripts\Activate.ps1
+
